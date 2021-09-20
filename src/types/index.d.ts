@@ -5,8 +5,8 @@ interface Action<T, P> {
   payload: P
 }
 
-interface IProject {
-  id: string
+type Project = ProjectItem & {
+  issueStatus: "empty" | "loading" | "complete"
 }
 interface IIssue {
   id: string

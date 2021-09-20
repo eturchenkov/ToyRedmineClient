@@ -5,20 +5,25 @@ class AuthService {
   token: string
   agent: AxiosInstance
   constructor(agent: AxiosInstance) {
-    this.token = "digest"
+    this.token = "short"
     this.agent = agent
+    this.agent.defaults.headers.common.Authorization =
+      "Basic dGVzdDp0ZXN0dGFzaw=="
+    // this.agent.defaults.headers.common["X-Redmine-API-Key"] =
+    // "2fda745bb4cdd835fdf41ec1fab82a13ddc1a54c"
+    // this.agent.defaults.headers.common["key"] =
+    // this.agent.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
   }
   isAuthenticated() {
-    return Boolean(localStorage.getItem(this.token))
+    return true
+    // return Boolean(localStorage.getItem(this.token))
   }
   setAuthData(creds: string) {
     this.token = creds
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     this.agent.defaults.headers.common.Authorization = creds
   }
   removeAuthData() {
     localStorage.removeItem(this.token)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     this.agent.defaults.headers.common.Authorization = ""
   }
 }

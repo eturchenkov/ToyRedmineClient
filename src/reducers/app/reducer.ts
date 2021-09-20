@@ -2,7 +2,7 @@ import { AppActionUnion } from "./index"
 import { AppActionType } from "./actionCreators"
 
 interface AppState {
-  projectList: IProject[]
+  projectList: Project[]
   issueList: IIssue[]
 }
 
@@ -12,7 +12,13 @@ export const AppReducer = (
 ): AppState => {
   switch (action.type) {
     case AppActionType.addProjectList: {
-      return state
+      return {
+        ...state,
+        projectList: action.payload.projectList.map((project) => ({
+          ...project,
+          issueStatus: "empty",
+        })),
+      }
     }
     default: {
       return state

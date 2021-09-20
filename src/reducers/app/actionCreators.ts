@@ -4,8 +4,8 @@ export enum AppActionType {
 }
 
 export const addProjectList = (
-  projectList: IProject[],
-): Action<AppActionType.addProjectList, { projectList: IProject[] }> => ({
+  projectList: ProjectItem[],
+): Action<AppActionType.addProjectList, { projectList: ProjectItem[] }> => ({
   type: AppActionType.addProjectList,
   payload: { projectList },
 })

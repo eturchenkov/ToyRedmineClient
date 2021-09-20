@@ -8,6 +8,11 @@ import { store, persistor } from "./configureStore"
 import { App } from "./App"
 import "./index.css"
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/index")
+  worker.start()
+}
+
 const history = createBrowserHistory()
 
 ReactDOM.render(

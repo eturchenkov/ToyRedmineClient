@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "functional"],
   "rules": {
-    "functional/prefer-readonly-type": "off"
+    "functional/prefer-readonly-type": "off",
+    "@typescript-eslint/no-var-requires": "off"
   }
 }
